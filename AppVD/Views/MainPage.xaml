@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Behaviors="clr-namespace:AppVD.Behaviors"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xtc="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:convert="clr-namespace:AppVD.Converters"
+             x:Class="AppVD.Views.MainPage"
+             x:Name="this"
+    Title="{Binding Title}">
+
+    <AbsoluteLayout >
+        <xtc:MediaElement Source="ms-appx:///video2.mp4"
+  ShowsPlaybackControls="False" AutoPlay="True" BackgroundColor="Black" Aspect="AspectFill" IsLooping="True"
+                          HeightRequest="{Binding Path=Height, Source={x:Reference this}}" 
+                          WidthRequest="{Binding Path= Width, Source={x:Reference this}}"
+                          HorizontalOptions="CenterAndExpand" />
+
+        <ScrollView
+  Grid.Row="0"
+  HeightRequest="45"
+  HorizontalOptions="FillAndExpand"
+  HorizontalScrollBarVisibility="Never"
+            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                 AbsoluteLayout.LayoutBounds="0, 1, 1,30"
+  IsEnabled="{OnPlatform Android=False}"
+  Orientation="Horizontal">
+            <StackLayout Padding="0" Orientation="Horizontal" Spacing="0">
+                <StackLayout.Behaviors>
+                    <Behaviors:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference  this }}" />
+                </StackLayout.Behaviors>
+            </StackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+
+</ContentPage>
